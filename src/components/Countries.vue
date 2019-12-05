@@ -49,11 +49,19 @@
                 :total="totalItems">
             </el-pagination>
         </el-container>
+
+        <ui-edit-country @close-edit-country="editDialogShown = false" :visible="editDialogShown"></ui-edit-country>
     </ui-app>
 </template>
 
 <script>
+    import EditCountry from './EditCountry.vue'
+
     export default {
+        components: {
+            "ui-edit-country": EditCountry
+        },
+
         data() {
             var tableData = window._state.countries
             var pageSize = 10
@@ -63,7 +71,9 @@
                 pageSize: pageSize,
                 tableData: tableData,
                 totalItems: tableData.length,
-                pageCount: Math.ceil(tableData.length) / pageSize
+                pageCount: Math.ceil(tableData.length) / pageSize,
+
+                editDialogShown: false
             }
         },
 
@@ -80,6 +90,7 @@
             },
 
             editRow(index) {
+                this.editDialogShown = true
                 console.log('editRow', index)
             },
 
