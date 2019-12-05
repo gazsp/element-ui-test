@@ -50,7 +50,13 @@
             </el-pagination>
         </el-container>
 
-        <ui-edit-country @close-edit-country="editDialogShown = false" :visible="editDialogShown"></ui-edit-country>
+        <ui-edit-country
+            v-model="editItem"
+            @close-edit-country="editDialogShown = false"
+            @save-country="saveCountry"
+            :item="editItem"
+            :visible="editDialogShown">
+        </ui-edit-country>
     </ui-app>
 </template>
 
@@ -73,7 +79,8 @@
                 totalItems: tableData.length,
                 pageCount: Math.ceil(tableData.length) / pageSize,
 
-                editDialogShown: false
+                editDialogShown: false,
+                editItem: {}
             }
         },
 
@@ -90,12 +97,17 @@
             },
 
             editRow(index) {
+                this.editItem = this.paginatedTableData[index]
                 this.editDialogShown = true
-                console.log('editRow', index)
+                console.log('editRow', index, this.editItem)
             },
 
             deleteRow(index) {
                 console.log('deleteRow', index)
+            },
+
+            saveCountry() {
+                console.log('TODO: Save country', JSON.stringify(this.editItem))
             }
         }
     }
