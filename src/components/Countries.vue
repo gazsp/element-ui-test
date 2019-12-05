@@ -69,7 +69,7 @@
 
         computed: {
             paginatedTableData() {
-                return this.tableData.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize - 1)
+                return this.tableData.slice(this.page * (this.pageSize), (this.page * this.pageSize) + this.pageSize)
             }
         },
 
