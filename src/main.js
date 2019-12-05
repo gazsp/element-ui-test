@@ -23,8 +23,19 @@ const router = new VueRouter({
 
 // Static data
 import countries from './data/countries.js'
+
+// TODO: Move to VueX
+var id = 1
+let countryTableData = countries.map((item)=> {
+    return ({
+        id: id++,
+        name: item.name,
+        code: item.code
+    })
+})
+
 window._state = {
-  countries: countries
+  countries: countryTableData
 }
 
 Vue.component('ui-app', App)

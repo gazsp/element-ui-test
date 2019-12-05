@@ -4,7 +4,7 @@
             Countries
         </template>
 
-        <el-table :data="tableData"
+        <el-table :data="paginatedTableData"
             style="width:100%"
             >
             <el-table-column
@@ -38,33 +38,44 @@
                 </template>
             </el-table-column>
         </el-table>
+
+        <el-container>
+            <el-pagination
+                background
+                @current-change="pageChanged"
+                :page-size="10"
+                :page-count="pageCount"
+                layout="prev, pager, next"
+                :total="totalItems">
+            </el-pagination>
+        </el-container>
     </ui-app>
 </template>
 
 <script>
     export default {
         data() {
+            var tableData = window._state.countries
+            var pageSize = 10
+
             return {
-                tableData: []
+                page: 0,
+                pageSize: pageSize,
+                tableData: tableData,
+                totalItems: tableData.length,
+                pageCount: Math.ceil(tableData.length) / pageSize
             }
         },
 
-        mounted() {
-            this.initTableData()
+        computed: {
+            paginatedTableData() {
+                return this.tableData.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize - 1)
+            }
         },
 
         methods: {
-            // TODO: Move to main.js / VueX
-            initTableData() {
-                var id = 1
-                this.tableData = window._state.countries.map((item)=> {
-                    return ({
-                        id: id,
-                        name: item.name,
-                        code: item.code
-                    })
-                    id++
-                })
+            pageChanged(value) {
+                this.page = value - 1
             },
 
             editRow(index) {

@@ -16,3 +16,9 @@ body {
 .el-aside .el-menu {
     min-height: 100vh;
 }
+
+.el-pagination {
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+}
