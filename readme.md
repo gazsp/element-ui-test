@@ -2,6 +2,7 @@
 
 # What works
 
+* Vue Router
 * Pagination
 * Editing items
 * Deleting items
