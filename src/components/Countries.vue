@@ -80,6 +80,7 @@
                 pageCount: Math.ceil(tableData.length) / pageSize,
 
                 editDialogShown: false,
+                editItemIndex: 0,
                 editItem: {}
             }
         },
@@ -97,6 +98,7 @@
             },
 
             editRow(index) {
+                this.editItemIndex = index
                 this.editItem = this.paginatedTableData[index]
                 this.editDialogShown = true
                 console.log('editRow', index, this.editItem)
@@ -107,7 +109,7 @@
             },
 
             saveCountry() {
-                console.log('TODO: Save country', JSON.stringify(this.editItem))
+                this.$set(this.paginatedTableData, this.editItemIndex, this.editItem)
             }
         }
     }
