@@ -101,15 +101,16 @@
                 this.editItemIndex = index
                 this.editItem = this.paginatedTableData[index]
                 this.editDialogShown = true
-                console.log('editRow', index, this.editItem)
             },
 
             deleteRow(index) {
-                console.log('deleteRow', index)
+                var offset = this.page * this.pageSize + index
+                this.tableData.splice(offset, 1)
             },
 
             saveCountry() {
-                this.$set(this.paginatedTableData, this.editItemIndex, this.editItem)
+                var offset = this.page * this.pageSize + this.editItemIndex
+                this.$set(this.tableData, offset, this.editItem)
             }
         }
     }
