@@ -22,9 +22,5 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('App component mounted')
-        }
-    }
+    export default { }
 </script>
