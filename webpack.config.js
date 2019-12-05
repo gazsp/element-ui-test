@@ -59,7 +59,8 @@ module.exports = (env = {}) => ({
   },
   resolve: {
     alias: {
-      '~': resolve(__dirname, 'src')
+      '~': resolve(__dirname, 'src'),
+      vue: 'vue/dist/vue.js'
     },
     extensions: ['.js', '.vue', '.json', '.css']
   },
