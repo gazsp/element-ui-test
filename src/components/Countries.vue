@@ -69,7 +69,8 @@
 
         computed: {
             paginatedTableData() {
-                return this.tableData.slice(this.page * (this.pageSize), (this.page * this.pageSize) + this.pageSize)
+                let count = this.page * this.pageSize
+                return this.tableData.slice(count, count + this.pageSize)
             }
         },
 
