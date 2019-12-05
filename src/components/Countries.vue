@@ -26,6 +26,17 @@
                 label="Name"
             >
             </el-table-column>
+
+            <el-table-column
+                fixed="right"
+                label="Actions"
+                width="120"
+            >
+                <template slot-scope="scope">
+                    <el-button @click="editRow(scope.$index)" type="primary" icon="el-icon-edit" circle></el-button>
+                    <el-button @click="deleteRow(scope.$index)" type="danger" icon="el-icon-delete" circle></el-button>
+                </template>
+            </el-table-column>
         </el-table>
     </ui-app>
 </template>
@@ -43,10 +54,9 @@
         },
 
         methods: {
+            // TODO: Move to main.js / VueX
             initTableData() {
                 var id = 1
-
-                // TODO: Move to main.js / VueX
                 this.tableData = window._state.countries.map((item)=> {
                     return ({
                         id: id,
@@ -55,7 +65,14 @@
                     })
                     id++
                 })
+            },
 
+            editRow(index) {
+                console.log('editRow', index)
+            },
+
+            deleteRow(index) {
+                console.log('deleteRow', index)
             }
         }
     }
