@@ -14,7 +14,7 @@
               </el-header>
 
               <el-main>
-                <slot name="main"></slot>
+                <slot></slot>
               </el-main>
             </el-container>
         </el-container>

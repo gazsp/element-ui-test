@@ -3,9 +3,6 @@
         <template slot="header">
             Home
         </template>
-
-        <template slot="main">
-        </template>
     </ui-app>
 </template>
 
