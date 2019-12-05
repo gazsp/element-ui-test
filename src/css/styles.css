@@ -1,0 +1,18 @@
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+
+body {
+  font-family: "system";
+}
+
+.el-menu a {
+    text-decoration: none;
+}
+
+.el-aside .el-menu {
+    min-height: 100vh;
+}
